@@ -3,13 +3,13 @@ package ricksciascia.u5d5.runners;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import ricksciascia.u5d5.entities.Edificio;
-import ricksciascia.u5d5.entities.Postazione;
-import ricksciascia.u5d5.entities.TipoPostazione;
-import ricksciascia.u5d5.entities.Utente;
+import ricksciascia.u5d5.entities.*;
 import ricksciascia.u5d5.services.EdificioService;
 import ricksciascia.u5d5.services.PostazioneService;
+import ricksciascia.u5d5.services.PrenotazioneService;
 import ricksciascia.u5d5.services.UtenteService;
+
+import java.time.LocalDate;
 
 @Component
 public class Runner implements CommandLineRunner {
@@ -17,12 +17,14 @@ public class Runner implements CommandLineRunner {
     private final EdificioService edificioService;
     private final UtenteService utenteService;
     private final PostazioneService postazioneService;
+    private final PrenotazioneService prenotazioneService;
 
     @Autowired
-    public Runner(EdificioService edificioService, UtenteService utenteService, PostazioneService postazioneService) {
+    public Runner(EdificioService edificioService, UtenteService utenteService, PostazioneService postazioneService, PrenotazioneService prenotazioneService) {
         this.edificioService = edificioService;
         this.utenteService = utenteService;
         this.postazioneService = postazioneService;
+        this.prenotazioneService = prenotazioneService;
     }
 
 
@@ -58,6 +60,10 @@ public class Runner implements CommandLineRunner {
 //            System.out.println(privataSheratonFromDB);
 //            System.out.println(riunioniSheratonFromDB);
 //            System.out.println(openSheratonFromDB);
+            Prenotazione prenotazioneOpSpSheraton = new Prenotazione(LocalDate.of(2026,2,2),openSheratonFromDB,mickFromDb);
+            Prenotazione prenotazioneSalaRiunioniSheraton = new Prenotazione(LocalDate.of(2026,2,2),riunioniSheratonFromDB,alfredFromDb);
+//            prenotazioneService.savePrenotazione(prenotazioneOpSpSheraton);
+//            prenotazioneService.savePrenotazione(prenotazioneSalaRiunioniSheraton);
 
         }
         catch(Exception ex) {
