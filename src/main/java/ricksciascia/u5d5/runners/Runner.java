@@ -79,8 +79,12 @@ public class Runner implements CommandLineRunner {
 //            prenotazioneService.savePrenotazione(prenotazioneStessoGiornoMick);
 //            Utente findMick = utenteService.trovaTramiteEmail("michelecriscitiello@sportitalia.it");
 //            System.out.println(findMick);
-            Utente emailDuplicata = new Utente("fake","Michele Criscitiello FAKE HAHAH","michelecriscitiello@sportitalia.it");
-            utenteService.saveUtente(emailDuplicata);
+//            Utente emailDuplicata = new Utente("fake","Michele Criscitiello FAKE HAHAH","michelecriscitiello@sportitalia.it");
+//            utenteService.saveUtente(emailDuplicata);
+//            Utente findMickFromUsername = utenteService.trovaTramiteUsername("mickcriscitiello");
+//            System.out.println(findMickFromUsername);
+            Utente usernameDuplicato = new Utente("mickcriscitiello","Michele Criscitiello","michele_l_omonimo@gmail.com");
+            utenteService.saveUtente(usernameDuplicato);
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());

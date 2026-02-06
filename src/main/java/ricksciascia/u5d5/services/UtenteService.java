@@ -23,7 +23,8 @@ public class UtenteService {
         if(!newUtente.getEmail().contains(".")) throw new ValidationException("Email non valida: manca il .it o .com o .tuodominio");
 //        controllo se email del utente è già in DB
         if(utenteRepository.findByEmailIgnoreCase(newUtente.getEmail()) != null) throw new ValidationException("L'email: " + newUtente.getEmail() + " risulta già registrata nel nostro database!");
-//        TODO: controllo se username utente è già in DB
+//        controllo se username utente è già in DB
+        if(utenteRepository.findByUsername(newUtente.getUsername()) != null) throw new ValidationException("L'username: " + newUtente.getUsername() + " è già in utilizzo, prova con un altro!");
 
         this.utenteRepository.save(newUtente);
         System.out.println("Utente salvato/aggiornato correttamente!");
@@ -35,5 +36,8 @@ public class UtenteService {
 
     public Utente trovaTramiteEmail(String email) {
         return utenteRepository.findByEmailIgnoreCase(email);
+    }
+    public Utente trovaTramiteUsername(String username) {
+        return utenteRepository.findByUsername(username);
     }
 }

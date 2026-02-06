@@ -9,5 +9,5 @@ public interface UtenteRepository extends JpaRepository<Utente,Long> {
 
 //    TODO: eventuali queries
     Utente findByEmailIgnoreCase(String email);
-
+    Utente findByUsername(String username);
 }
