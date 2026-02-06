@@ -21,12 +21,19 @@ public class UtenteService {
         if(newUtente.getUsername().length()<3) throw new ValidationException("L'username deve essere di 3 o più caratteri");
         if(!newUtente.getEmail().contains("@")) throw new ValidationException("Email non valida: manca la @");
         if(!newUtente.getEmail().contains(".")) throw new ValidationException("Email non valida: manca il .it o .com o .tuodominio");
-//      TODO: aggiungere (se ho tempo) controllo se email è già presente in db
+//        controllo se email del utente è già in DB
+        if(utenteRepository.findByEmailIgnoreCase(newUtente.getEmail()) != null) throw new ValidationException("L'email: " + newUtente.getEmail() + " risulta già registrata nel nostro database!");
+//        TODO: controllo se username utente è già in DB
+
         this.utenteRepository.save(newUtente);
         System.out.println("Utente salvato/aggiornato correttamente!");
     }
 
     public Utente findById(long idUtente){
         return utenteRepository.findById(idUtente).orElseThrow(()->new NotFoundException(idUtente));
+    }
+
+    public Utente trovaTramiteEmail(String email) {
+        return utenteRepository.findByEmailIgnoreCase(email);
     }
 }

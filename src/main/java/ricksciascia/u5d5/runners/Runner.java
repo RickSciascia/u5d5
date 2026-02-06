@@ -76,7 +76,11 @@ public class Runner implements CommandLineRunner {
 
 //            Prenotazione sheratonDLDay = prenotazioneService.cercaPrenotazioneByDataPrenotazioneEUtente(LocalDate.of(2026,2,2),mickFromDb);
 //            System.out.println(sheratonDLDay);
-            prenotazioneService.savePrenotazione(prenotazioneStessoGiornoMick);
+//            prenotazioneService.savePrenotazione(prenotazioneStessoGiornoMick);
+//            Utente findMick = utenteService.trovaTramiteEmail("michelecriscitiello@sportitalia.it");
+//            System.out.println(findMick);
+            Utente emailDuplicata = new Utente("fake","Michele Criscitiello FAKE HAHAH","michelecriscitiello@sportitalia.it");
+            utenteService.saveUtente(emailDuplicata);
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());

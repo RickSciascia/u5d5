@@ -8,5 +8,6 @@ import ricksciascia.u5d5.entities.Utente;
 public interface UtenteRepository extends JpaRepository<Utente,Long> {
 
 //    TODO: eventuali queries
+    Utente findByEmailIgnoreCase(String email);
 
 }

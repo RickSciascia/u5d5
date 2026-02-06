@@ -15,8 +15,7 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione,Long>
 //    TODO: eventuali queries
 //    query ricerca prenotazione specifica data e specifica postazione
     Prenotazione findByDataPrenotazioneAndPostazione(LocalDate dataPrenotazione, Postazione postazione);
-
+//    query ricerca prenotazione specifica data da specifico utente
     Prenotazione findByDataPrenotazioneAndUtente(LocalDate dataPrenotazione, Utente utente);
-//    @Query("Select p FROM Prenotazione p WHERE p.dataPrenotazione = :dataPrenotazione AND p.postazione = :postazione")
-//    boolean existByDataPrenotazioneAndPostazione(LocalDate dataPrenotazione, Postazione postazione);
+
 }
