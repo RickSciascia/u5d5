@@ -61,13 +61,17 @@ public class Runner implements CommandLineRunner {
 //            System.out.println(riunioniSheratonFromDB);
 //            System.out.println(openSheratonFromDB);
             Prenotazione prenotazioneOpSpSheraton = new Prenotazione(LocalDate.of(2026,2,2),openSheratonFromDB,mickFromDb);
+            Prenotazione prenotazioneOpSpSheraton1 = new Prenotazione(LocalDate.of(2026,2,3),openSheratonFromDB,mickFromDb);
             Prenotazione prenotazioneSalaRiunioniSheraton = new Prenotazione(LocalDate.of(2026,2,2),riunioniSheratonFromDB,alfredFromDb);
-//            prenotazioneService.savePrenotazione(prenotazioneOpSpSheraton);
+            prenotazioneService.savePrenotazione(prenotazioneOpSpSheraton1);
 //            prenotazioneService.savePrenotazione(prenotazioneSalaRiunioniSheraton);
 //            -------------------------- TEST QUERIES -------------------------------
 
 //            postazioneService.ricercaPostazioneByParteDescrizione("Sheraton").forEach(System.out::println);
 //            postazioneService.ricercaPostazioneTramiteTipoECitta(TipoPostazione.OPENSPACE,"Milano").forEach(System.out::println);
+
+//            Prenotazione sheratonDeadlineDay = prenotazioneService.cercaPrenotazioneByDataEPostazione(LocalDate.of(2026,2,5),openSheratonFromDB);
+//            System.out.println(sheratonDeadlineDay);
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());

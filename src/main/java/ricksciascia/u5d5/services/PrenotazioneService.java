@@ -2,9 +2,13 @@ package ricksciascia.u5d5.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ricksciascia.u5d5.entities.Postazione;
 import ricksciascia.u5d5.entities.Prenotazione;
 import ricksciascia.u5d5.exceptions.NotFoundException;
+import ricksciascia.u5d5.exceptions.ValidationException;
 import ricksciascia.u5d5.repositories.PrenotazioneRepository;
+
+import java.time.LocalDate;
 
 @Service
 public class PrenotazioneService {
@@ -18,6 +22,7 @@ public class PrenotazioneService {
     public void savePrenotazione(Prenotazione newPrenotazione) {
 //        TODO controlli delle queries
 //        controllo che una prenotazione di una Postazione nel giorno specificato non sia già in DB
+        if (prenotazioneRepository.findByDataPrenotazioneAndPostazione(newPrenotazione.getDataPrenotazione(),newPrenotazione.getPostazione()) != null) throw new ValidationException("Impossibile prenotare, il Posto è già occupato");
 //
         this.prenotazioneRepository.save(newPrenotazione);
         System.out.println("Prenotazione salvata/aggiornata correttamente");
@@ -26,4 +31,9 @@ public class PrenotazioneService {
     public Prenotazione findById(long idPrenotazione) {
         return prenotazioneRepository.findById(idPrenotazione).orElseThrow(()->new NotFoundException(idPrenotazione));
     }
+
+    public Prenotazione cercaPrenotazioneByDataEPostazione(LocalDate data, Postazione postazione) {
+        return prenotazioneRepository.findByDataPrenotazioneAndPostazione(data,postazione);
+    }
+
 }
