@@ -8,6 +8,7 @@ import ricksciascia.u5d5.entities.Postazione;
 import ricksciascia.u5d5.entities.TipoPostazione;
 import ricksciascia.u5d5.entities.Utente;
 import ricksciascia.u5d5.services.EdificioService;
+import ricksciascia.u5d5.services.PostazioneService;
 import ricksciascia.u5d5.services.UtenteService;
 
 @Component
@@ -15,11 +16,13 @@ public class Runner implements CommandLineRunner {
 //    TODO: autowired dei vari services via constructor o field
     private final EdificioService edificioService;
     private final UtenteService utenteService;
+    private final PostazioneService postazioneService;
 
     @Autowired
-    public Runner(EdificioService edificioService, UtenteService utenteService) {
+    public Runner(EdificioService edificioService, UtenteService utenteService, PostazioneService postazioneService) {
         this.edificioService = edificioService;
         this.utenteService = utenteService;
+        this.postazioneService = postazioneService;
     }
 
 
@@ -40,10 +43,22 @@ public class Runner implements CommandLineRunner {
             Edificio hotelSheratonFromDb = edificioService.findById(2);
             Utente mickFromDb = utenteService.findById(1);
             Utente alfredFromDb = utenteService.findById(2);
-        Postazione openSpaceSheraton = new Postazione("Open Space per DeadLineDay GEN 2026", TipoPostazione.OPENSPACE,300,hotelSheratonFromDb);
+//            Postazione openSpaceSheraton = new Postazione("Open Space Hotel Sheraton", TipoPostazione.OPENSPACE,300,hotelSheratonFromDb);
+//            Postazione salaPrivataSheraton = new Postazione("Sala Privata Hotel Sheraton", TipoPostazione.PRIVATO,150,hotelSheratonFromDb);
+//            Postazione salaRiunioniSheraton = new Postazione("Sala Riunioni Hotel Sheraton", TipoPostazione.SALA_RIUNIONI,50,hotelSheratonFromDb);
 //            System.out.println(mickFromDb);
 //            System.out.println(alfredFromDb);
 //            System.out.println(hotelSheratonFromDb);
+//            postazioneService.savePostazione(openSpaceSheraton);
+//            postazioneService.savePostazione(salaRiunioniSheraton);
+//            postazioneService.savePostazione(salaPrivataSheraton);
+            Postazione privataSheratonFromDB = postazioneService.findById(1);
+            Postazione riunioniSheratonFromDB = postazioneService.findById(2);
+            Postazione openSheratonFromDB = postazioneService.findById(3);
+//            System.out.println(privataSheratonFromDB);
+//            System.out.println(riunioniSheratonFromDB);
+//            System.out.println(openSheratonFromDB);
+
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());
