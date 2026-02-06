@@ -63,7 +63,8 @@ public class Runner implements CommandLineRunner {
             Prenotazione prenotazioneOpSpSheraton = new Prenotazione(LocalDate.of(2026,2,2),openSheratonFromDB,mickFromDb);
             Prenotazione prenotazioneOpSpSheraton1 = new Prenotazione(LocalDate.of(2026,2,3),openSheratonFromDB,mickFromDb);
             Prenotazione prenotazioneSalaRiunioniSheraton = new Prenotazione(LocalDate.of(2026,2,2),riunioniSheratonFromDB,alfredFromDb);
-            prenotazioneService.savePrenotazione(prenotazioneOpSpSheraton1);
+            Prenotazione prenotazioneStessoGiornoMick = new Prenotazione(LocalDate.of(2026,2,2),privataSheratonFromDB,mickFromDb);
+//            prenotazioneService.savePrenotazione(prenotazioneOpSpSheraton1);
 //            prenotazioneService.savePrenotazione(prenotazioneSalaRiunioniSheraton);
 //            -------------------------- TEST QUERIES -------------------------------
 
@@ -72,6 +73,10 @@ public class Runner implements CommandLineRunner {
 
 //            Prenotazione sheratonDeadlineDay = prenotazioneService.cercaPrenotazioneByDataEPostazione(LocalDate.of(2026,2,5),openSheratonFromDB);
 //            System.out.println(sheratonDeadlineDay);
+
+//            Prenotazione sheratonDLDay = prenotazioneService.cercaPrenotazioneByDataPrenotazioneEUtente(LocalDate.of(2026,2,2),mickFromDb);
+//            System.out.println(sheratonDLDay);
+            prenotazioneService.savePrenotazione(prenotazioneStessoGiornoMick);
         }
         catch(Exception ex) {
             System.out.println(ex.getMessage());

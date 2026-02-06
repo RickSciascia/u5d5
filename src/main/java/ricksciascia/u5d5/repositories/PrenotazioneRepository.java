@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ricksciascia.u5d5.entities.Postazione;
 import ricksciascia.u5d5.entities.Prenotazione;
+import ricksciascia.u5d5.entities.Utente;
 
 import java.time.LocalDate;
 
@@ -15,6 +16,7 @@ public interface PrenotazioneRepository extends JpaRepository<Prenotazione,Long>
 //    query ricerca prenotazione specifica data e specifica postazione
     Prenotazione findByDataPrenotazioneAndPostazione(LocalDate dataPrenotazione, Postazione postazione);
 
+    Prenotazione findByDataPrenotazioneAndUtente(LocalDate dataPrenotazione, Utente utente);
 //    @Query("Select p FROM Prenotazione p WHERE p.dataPrenotazione = :dataPrenotazione AND p.postazione = :postazione")
 //    boolean existByDataPrenotazioneAndPostazione(LocalDate dataPrenotazione, Postazione postazione);
 }
